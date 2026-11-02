@@ -1,0 +1,20 @@
+# Open Note Server 热部署配置（开发机端）
+# 用法：python -m tae.cli.main serve --config tae-config.yaml
+# 详情见 README.md「TAE 热部署」章节
+
+project_dir: .                      # 本项目根目录
+target_dir: C:\Users\Administrator\Desktop\my-cloud-server     # 目标服务器上的部署目录（按实际修改）
+ignore_file: .taeignore             # 打包忽略规则（排除 venv/用户数据等）
+
+# 服务生命周期命令（按目标环境修改；不依赖 systemd）
+# Windows 示例：停止/启动 waitress 进程
+#stop_command: "taskkill /F /FI \"IMAGENAME eq python.exe\" /FI \"WINDOWTITLE eq *mock-server*\""
+#start_command: 'venv\Scripts\python.exe run.py'
+
+# 部署后健康检查（服务起好后返回 200 才视为部署成功）
+#health_check_url: http://localhost:5000/api/health
+#health_check_timeout: 60
+
+host: 0.0.0.0
+port: 8000
+token: change-me-token              # 客户端部署时需提供相同 token

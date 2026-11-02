@@ -1,0 +1,29 @@
+# 运行时数据目录
+data/
+# 虚拟环境
+.venv/
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+# 编辑器
+.idea/
+# 冷备 txt
+backup/
+# 占位图
+static/placeholder.webp
+# 管理后台前端构建产物
+static/admin/
+# 笔记前端构建产物（desktop/mobile）
+static/desktop/
+static/mobile/
+# 云服务 Web 前端构建产物（portal/album/drive）
+static/web/
+admin-frontend/node_modules/
+web/node_modules/
+# 本地配置（可能含密钥；用 .env.example 作模板）
+.env
+# 日志与 JVM 崩溃转储
+*.log
+hs_err_pid*.log
+replay_pid*.log

@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #f0f4f8;
+  color: #1f2d3d;
+}
+.app-grid-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #fff;
+  margin: 0 auto 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}

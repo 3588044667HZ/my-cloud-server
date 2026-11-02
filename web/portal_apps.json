@@ -1,0 +1,6 @@
+[
+  { "id": "album", "name": "相册", "icon": "", "url": "/web/album", "desc": "云端照片浏览与上传" },
+  { "id": "drive", "name": "云盘", "icon": "", "url": "/web/drive", "desc": "文件管理与回收站" },
+  { "id": "note", "name": "便签", "icon": "", "url": "/web/note", "desc": "跨设备同步便签" },
+  { "id": "admin", "name": "管理后台", "icon": "", "url": "/admin", "desc": "设备与硬盘管理" }
+]

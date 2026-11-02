@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "2.0",
+  "updateId": "example-update-0001",
+  "timestamp": "2026-08-11T00:00:00Z",
+  "expiresAt": "2099-12-31T23:59:59Z",
+  "targetVersion": "2.0.0",
+  "minClientVersion": "1.0.0",
+  "actions": [
+    {
+      "id": "ensure-main-dll",
+      "type": "file.ensure",
+      "description": "确保主程序二进制为指定版本",
+      "dependsOn": [],
+      "onFailure": "abort",
+      "target": {
+        "path": "/opt/myapp/bin/main.dll",
+        "hash": { "algo": "sha256", "value": "<sha256-of-file>" },
+        "size": 204800,
+        "permissions": "0755"
+      },
+      "download": {
+        "urls": [
+          { "url": "https://cdn1.example.com/myapp/main.dll?sign=xxx", "priority": 1 },
+          { "url": "https://cdn2.example.com/myapp/main.dll?sign=xxx", "priority": 2 }
+        ],
+        "hash": { "algo": "sha256", "value": "<sha256-of-file>" },
+        "size": 204800
+      },
+      "rollback": { "backupOriginal": true }
+    },
+    {
+      "id": "add-readme",
+      "type": "file.add",
+      "dependsOn": ["ensure-main-dll"],
+      "target": { "path": "/opt/myapp/README.md" },
+      "download": {
+        "urls": [{ "url": "https://cdn1.example.com/myapp/README.md", "priority": 1 }],
+        "hash": { "algo": "sha256", "value": "<sha256-of-file>" }
+      }
+    },
+    {
+      "id": "delete-legacy",
+      "type": "file.delete",
+      "dependsOn": ["add-readme"],
+      "target": { "path": "/opt/myapp/legacy.cfg" },
+      "rollback": { "backupOriginal": true }
+    },
+    {
+      "id": "run-migration",
+      "type": "process.exec",
+      "dependsOn": ["delete-legacy"],
+      "onFailure": "rollback",
+      "command": "migrate.sh --db=/var/lib/myapp/app.db",
+      "timeout": 60,
+      "rollback": { "command": "rollback.sh --db=/var/lib/myapp/app.db", "timeout": 60 }
+    }
+  ]
+}

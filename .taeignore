@@ -1,0 +1,33 @@
+# TAE 打包忽略规则（gitignore 风格子集）
+
+# 虚拟环境与 Python 缓存
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 版本控制与 IDE
+.git/
+.idea/
+.vscode/
+
+# 运行时数据（用户数据，部署时不可覆盖目标服务器）
+data/
+backup/
+notes_data/
+accounts.db
+identifier.sqlite
+
+# 前端构建源码工程（运行仅需 static/ 下的构建产物）
+admin-frontend/
+
+/web/
+
+
+# 临时文件与日志
+*.log
+mock-server.zip
+server.log
+
+# tae本身
+tae/

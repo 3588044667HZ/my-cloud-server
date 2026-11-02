@@ -1,0 +1,6 @@
+flask>=3.0
+flask-cors>=4.0
+waitress>=3.0
+Pillow>=10.0
+alembic>=1.13
+pyyaml>=6.0
